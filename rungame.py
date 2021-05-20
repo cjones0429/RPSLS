@@ -118,7 +118,23 @@ class Rungame:
         else:
             print(f"{self.player_two.name} is the Champion!!")
 
+    def play_again(self):
+        play_again = input("Do you want to play again? Type 'yes' to play again or hit any button to end")
+        if play_again == "yes":
+            print("Great! Let's play again!")
+            self.start_over()
 
+    def start_over(self):
+        user_input = input("Is Player One the same? Please enter 'yes' or 'no'")
+        if user_input == "yes":
+            self.round = 1
+            self.player_one.win_count = 0
+            self.player_two.win_count = 0
+            self.display_welcome()
+            self.display_rules()
+            self.start_game()
+        else:
+            pass
 
 
 
