@@ -87,5 +87,14 @@ class Rungame:
         print("Wall-e is picking his gesture wisely...")
         self.player_two.pick_gesture()
 
+    def results(self):
+        print(f"{self.player_two.name} picked: {self.player_two.action}\n"
+              f"{self.player_one.name} picked: {self.player_one.action}\n")
+
+        if self.player_one.action == self.player_two.action:
+            print("It's a tie!! Pick again! Choose carefully...")
+        else:
+            self.round += 1
+
 
 
