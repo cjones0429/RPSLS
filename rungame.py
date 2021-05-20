@@ -94,7 +94,31 @@ class Rungame:
         if self.player_one.action == self.player_two.action:
             print("It's a tie!! Pick again! Choose carefully...")
         else:
+            self.compare_result()
             self.round += 1
+
+    def compare_result(self):
+        player_one_hand_gesture = Gesture(self.player_one.action)
+        player_two_hand_gesture = Gesture(self.player_two.action)
+        gesture_action = player_one_hand_gesture.result(self.player_one.action, self.player_two.action)
+        if gesture_action != "None":
+            self.player_one.win_count += 1
+            self.display_round_result(self.player_one.name, self.player_one.action, self.player_two.name, self.player_two.action, gesture_action)
+        else:
+            self.player_two.win_count += 1
+            gesture_action = player_two_hand_gesture.result(self.player_two.action, self.player_one.action)
+            self.display_round_result(self.player_two.name, self.player_two.action, self.player_one.name, self.player_one.action, gesture_action)
+
+    def display_round_result(self, winner, winner_hand_gesture, loser, loser_hand_gesture, gesture_action):
+        print(f"{winner}'s {winner_hand_gesture} {gesture_action} {loser}'s {loser_hand_gesture}")
+
+    def display_winner(self):
+        if self.player_one.win_count > self.player_two.win_count:
+            print(f"{self.player_one.name} is the Champion!!")
+        else:
+            print(f"{self.player_two.name} is the Champion!!")
+
+
 
 
 
