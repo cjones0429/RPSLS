@@ -127,6 +127,7 @@ class Rungame:
     def start_over(self):
         user_input = input("Is Player One the same? Please enter 'yes' or 'no'")
         if user_input == "yes":
+            #this lets the player one name remain the same
             self.round = 1
             self.player_one.win_count = 0
             self.player_two.win_count = 0
@@ -134,7 +135,10 @@ class Rungame:
             self.display_rules()
             self.start_game()
         else:
-            pass
-
-
-
+            #this completely restarts the game
+            self.display_welcome()
+            self.display_rules()
+            self.player_one = Human(input("Please enter a name for Player One:"))
+            self.player_two = Computer()
+            self.round = 1
+            self.start_game()
