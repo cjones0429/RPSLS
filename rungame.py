@@ -97,6 +97,7 @@ class Rungame:
         #randomly selects action for computer
         print("Wall-e is picking his gesture wisely...")
         self.player_two.pick_gesture()
+        print("\n" * 2)
 
     def results(self):
         #prints what each player picked and if they picked the same it will print a tie
@@ -127,6 +128,7 @@ class Rungame:
     def display_round_result(self, winner, winner_hand_gesture, loser, loser_hand_gesture, gesture_action):
         #ex player1's paper DISPROVES player2's Spock
         print(f"{winner}'s {winner_hand_gesture} {gesture_action} {loser}'s {loser_hand_gesture}")
+        print("\n" * 2)
 
     def display_winner(self):
         if self.player_one.win_count > self.player_two.win_count:
