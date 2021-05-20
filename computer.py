@@ -8,4 +8,4 @@ class Computer(Player):
         super().__init__()
 
     def pick_gesture(self):
-        self.choice = self.gestures[random.randint(0, 4)]
+        self.action = self.hand_gestures[random.randint(0, 4)]
