@@ -94,10 +94,12 @@ class Rungame:
         print("\n" * 3)
 
     def computer_action(self):
+        #randomly selects action for computer
         print("Wall-e is picking his gesture wisely...")
         self.player_two.pick_gesture()
 
     def results(self):
+        #prints what each player picked and if they picked the same it will print a tie
         print(f"{self.player_two.name} picked: {self.player_two.action}\n"
               f"{self.player_one.name} picked: {self.player_one.action}\n")
 
@@ -108,6 +110,9 @@ class Rungame:
             self.round += 1
 
     def compare_result(self):
+        #gesture_action = what each gesture does to the other "smashes, cuts, disproves, etc")
+        #comparing each gesture to see if its in the class list keys and if it defeats it
+        #will add points to winning gesture player win_count
         player_one_hand_gesture = Gesture(self.player_one.action)
         player_two_hand_gesture = Gesture(self.player_two.action)
         gesture_action = player_one_hand_gesture.result(self.player_one.action, self.player_two.action)
@@ -120,6 +125,7 @@ class Rungame:
             self.display_round_result(self.player_two.name, self.player_two.action, self.player_one.name, self.player_one.action, gesture_action)
 
     def display_round_result(self, winner, winner_hand_gesture, loser, loser_hand_gesture, gesture_action):
+        #ex player1's paper DISPROVES player2's Spock
         print(f"{winner}'s {winner_hand_gesture} {gesture_action} {loser}'s {loser_hand_gesture}")
 
     def display_winner(self):
@@ -137,7 +143,7 @@ class Rungame:
     def start_over(self):
         user_input = input("Is Player One the same? Please enter 'yes' or 'no'")
         if user_input == "yes":
-            #this lets the player one name remain the same
+            #this lets the player one name remain the same (can still pick multiplayer
             self.round = 1
             self.player_one.win_count = 0
             self.player_two.win_count = 0
